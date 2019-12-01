@@ -1,48 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-  <title>Document</title>
-</head>
-<style>
-.tweet{
-  display:flex;
-  justify-content: center;
-}
-.trump-div{
-  display:flex;
-  justify-content: center;
-}
-.parody-div{
-  display:flex;
-  justify-content: center;
-}
-</style>
-<body>
-  <div class="container">
-    <div class="row">
-      <div class="col">
-        <div class="tweet">
-          tweet
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="tweetjs.js"></script>
+    <title>She said, He said - Donald Trump</title>
+  </head>
+  <style>
+    .tweet {
+      display: flex;
+      justify-content: center;
+    }
+    .trump-div {
+      display: flex;
+      justify-content: center;
+    }
+    .parody-div {
+      display: flex;
+      justify-content: center;
+    }
+  </style>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <div class="tweet">
+            tweet
+          </div>
         </div>
       </div>
-    </div>
-    <div class="row">
+      <div class="row">
         <div class="controls">
-            <button id = "start-btn">start</button>
-            <p>time <span id="countdown">75</span></p>
+          <button id="start-btn">start</button>
+          <p>time <span id="countdown">75</span></p>
         </div>
-      <div class="col trump-div">
-        <button class="btn-lg btn-warning">Trump</button>
-      </div>
-      <div class="col parody-div">
-        <button class="btn-lg btn-danger">Parody</button>
+        <div class="col trump-div">
+          <button class="btn-lg btn-warning">Trump</button>
+        </div>
+        <div class="col parody-div">
+          <button class="btn-lg btn-danger">Parody</button>
+        </div>
       </div>
     </div>
-  </div>
-<script src="index.js"></script>
-</body>
+    <script src="index.js"></script>
+  </body>
 </html>
