@@ -1,4 +1,5 @@
 var counter = 75;
+var qCount = 0
 
 function setTime() {
   var timerInterval = setInterval(function() {
@@ -9,15 +10,31 @@ function setTime() {
   }, 1000);
 }
 
-$("#start-btn").on("click", function() {
-  console.log("response");
-  var queryURL = "https://api.twitter.com/1.1/statuses/user_timeline.json";
-  $.ajax({
-    url: queryURL,
-    method: "GET"
-  }).then(function(response) {});
+
+
+var unfilteredTweets = []
+
+
+TweetJs.ListTweetsOnUserTimeline("realDonaldTrump", function(data) {
+  for (i = 0; i < data.length; i++){
+    var tweetData = data[i].text
+    unfilteredTweets.push(tweetData)
+    localStorage.setItem("test", unfilteredTweets)    
+  }
+    getTweets = localStorage.getItem("test")
+    filteredTweets = []
+    filteredTweets.push(getTweets)
+    allTweets = filteredTweets[0].split(",").filter(x=>x.length>70&&!x.includes("RT" && "@"))
+    console.log(allTweets)
 });
 
-TweetJs.ListTweetsOnUserTimeline("MicroBlizz", function(data) {
-  console.log(data);
+function nextQ(){
+  if (qCount < allTweets.length){
+    $(".tweet").text(allTweets[qCount])
+    qCount++
+  }
+}
+
+$("#start-btn").on("click", function() {
+  nextQ();
 });
