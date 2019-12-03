@@ -44,17 +44,10 @@ TweetJs.ListTweetsOnUserTimeline("realTronDump", function(data) {
 
 console.log(allTweets.concat(allTweets2))
 
-});
-});
-
-
-
-
-
 
 function nextQ(){
-  if (qCount < allTweets.length){
-    $(".tweet").text(allTweets[qCount])
+  if (qCount < allTweets.concat(allTweets2).length){
+    $(".tweet").text(allTweets.concat(allTweets2)[qCount])
     qCount++
   }
 }
@@ -63,3 +56,12 @@ function nextQ(){
 $("#start-btn").on("click", function() {
   nextQ();
 });
+
+});
+});
+
+
+
+
+
+
