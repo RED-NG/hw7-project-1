@@ -21,11 +21,11 @@ TweetJs.ListTweetsOnUserTimeline("TheOnion", function(data) {
     getTweets = localStorage.getItem("test")
     filteredTweets = []
     filteredTweets.push(getTweets)
-    allTweets = filteredTweets[0].split(",").filter(x=>x.length>100&&!x.includes("RT" && "..."))
+    allTweets = filteredTweets[0].split(",").filter(x=>x.length>100&&!x.includes("RT" && "@" && "\u2026"))
 
     var unfilteredTweets2 = []
 
-TweetJs.ListTweetsOnUserTimeline("InsideEdition", function(data) {
+TweetJs.ListTweetsOnUserTimeline("cnn", function(data) {
   for (i = 0; i < data.length; i++){
     var tweetData2 = data[i].text
     unfilteredTweets2.push(tweetData2)
