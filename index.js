@@ -25,7 +25,7 @@ TweetJs.ListTweetsOnUserTimeline("realDonaldTrump", function(data) {
     filteredTweets = []
     filteredTweets.push(getTweets)
     allTweets = filteredTweets[0].split(",").filter(x=>x.length>100&&!x.includes("RT" && "@"))
-    console.log(allTweets)
+    //console.log(allTweets)
 
 
     var unfilteredTweets2 = []
@@ -40,7 +40,7 @@ TweetJs.ListTweetsOnUserTimeline("realTronDump", function(data) {
     filteredTweets2 = []
     filteredTweets2.push(getTweets2)
     allTweets2 = filteredTweets2[0].split(",").filter(x=>x.length>100&&!x.includes("RT" && "@"))
-    console.log(allTweets2)
+    //console.log(allTweets2)
 
 console.log(allTweets.concat(allTweets2))
 
