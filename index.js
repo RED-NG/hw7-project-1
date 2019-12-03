@@ -10,12 +10,9 @@ function setTime() {
   }, 1000);
 }
 
-
-
 var unfilteredTweets = []
 
-
-TweetJs.ListTweetsOnUserTimeline("realDonaldTrump", function(data) {
+TweetJs.ListTweetsOnUserTimeline("TheOnion", function(data) {
   for (i = 0; i < data.length; i++){
     var tweetData = data[i].text
     unfilteredTweets.push(tweetData)
@@ -24,11 +21,11 @@ TweetJs.ListTweetsOnUserTimeline("realDonaldTrump", function(data) {
     getTweets = localStorage.getItem("test")
     filteredTweets = []
     filteredTweets.push(getTweets)
-    allTweets = filteredTweets[0].split(",").filter(x=>x.length>100&&!x.includes("RT" && "@"))
+    allTweets = filteredTweets[0].split(",").filter(x=>x.length>100&&!x.includes("RT" && "..."))
 
     var unfilteredTweets2 = []
 
-TweetJs.ListTweetsOnUserTimeline("realTronDump", function(data) {
+TweetJs.ListTweetsOnUserTimeline("InsideEdition", function(data) {
   for (i = 0; i < data.length; i++){
     var tweetData2 = data[i].text
     unfilteredTweets2.push(tweetData2)
@@ -37,7 +34,7 @@ TweetJs.ListTweetsOnUserTimeline("realTronDump", function(data) {
     getTweets2 = localStorage.getItem("test")
     filteredTweets2 = []
     filteredTweets2.push(getTweets2)
-    allTweets2 = filteredTweets2[0].split(",").filter(x=>x.length>100&&!x.includes("RT" && "@"))
+    allTweets2 = filteredTweets2[0].split(",").filter(x=>x.length>110&&!x.includes("RT" && "@" && "\u2026"))
 
 
   var thirdArr = allTweets.concat(allTweets2)
