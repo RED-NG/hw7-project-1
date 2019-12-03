@@ -24,9 +24,33 @@ TweetJs.ListTweetsOnUserTimeline("realDonaldTrump", function(data) {
     getTweets = localStorage.getItem("test")
     filteredTweets = []
     filteredTweets.push(getTweets)
-    allTweets = filteredTweets[0].split(",").filter(x=>x.length>70&&!x.includes("RT" && "@"))
+    allTweets = filteredTweets[0].split(",").filter(x=>x.length>100&&!x.includes("RT" && "@"))
     console.log(allTweets)
+
+
+    var unfilteredTweets2 = []
+
+TweetJs.ListTweetsOnUserTimeline("realTronDump", function(data) {
+  for (i = 0; i < data.length; i++){
+    var tweetData2 = data[i].text
+    unfilteredTweets2.push(tweetData2)
+    localStorage.setItem("test", unfilteredTweets2)    
+  }
+    getTweets2 = localStorage.getItem("test")
+    filteredTweets2 = []
+    filteredTweets2.push(getTweets2)
+    allTweets2 = filteredTweets2[0].split(",").filter(x=>x.length>100&&!x.includes("RT" && "@"))
+    console.log(allTweets2)
+
+console.log(allTweets.concat(allTweets2))
+
 });
+});
+
+
+
+
+
 
 function nextQ(){
   if (qCount < allTweets.length){
@@ -34,6 +58,7 @@ function nextQ(){
     qCount++
   }
 }
+
 
 $("#start-btn").on("click", function() {
   nextQ();
