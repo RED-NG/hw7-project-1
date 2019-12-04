@@ -67,7 +67,6 @@ TweetJs.ListTweetsOnUserTimeline("InsideEdition", function(data) {
   }
 
 
-
   $("#start-btn").on("click", function() {
     nextQ();
     setTime();
@@ -75,6 +74,15 @@ TweetJs.ListTweetsOnUserTimeline("InsideEdition", function(data) {
     $(".real-btn")[0].style.display = 'inline' 
     $(".fake-btn")[0].style.display = 'inline' 
   });
+
+
+  $(".real-btn").on("click", function(){
+    nextQ();
+  })
+
+  $(".fake-btn").on("click", function(){
+    nextQ();
+  })
 
   });
   });
