@@ -1,6 +1,11 @@
 var counter = 75;
 var qCount = 0
 
+$(".real-btn")[0].style.display = 'none' 
+$(".fake-btn")[0].style.display = 'none' 
+
+
+
 function setTime() {
   var timerInterval = setInterval(function() {
     if (counter > 0) {
@@ -8,8 +13,7 @@ function setTime() {
       $("#countdown").text(counter)
 
     }
-
-    if(secondsLeft === 0) {
+    if(counter === 0) {
       clearInterval(timerInterval);
     }
 
@@ -63,9 +67,13 @@ TweetJs.ListTweetsOnUserTimeline("InsideEdition", function(data) {
   }
 
 
+
   $("#start-btn").on("click", function() {
     nextQ();
-    setTime()
+    setTime();
+    this.style.display = 'none' 
+    $(".real-btn")[0].style.display = 'inline' 
+    $(".fake-btn")[0].style.display = 'inline' 
   });
 
   });
