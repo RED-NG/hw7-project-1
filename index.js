@@ -5,8 +5,14 @@ function setTime() {
   var timerInterval = setInterval(function() {
     if (counter > 0) {
       counter--;
-      $(".countdown").text(counter);
+      $("#countdown").text(counter)
+
     }
+
+    if(secondsLeft === 0) {
+      clearInterval(timerInterval);
+    }
+
   }, 1000);
 }
 
@@ -59,6 +65,7 @@ TweetJs.ListTweetsOnUserTimeline("InsideEdition", function(data) {
 
   $("#start-btn").on("click", function() {
     nextQ();
+    setTime()
   });
 
   });
