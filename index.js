@@ -4,6 +4,9 @@ var ranNum;
 
 $(".real-btn")[0].style.display = 'none' 
 $(".fake-btn")[0].style.display = 'none' 
+$(".real-btn").attr("button-type", "real")
+$(".fake-btn").attr("button-type", "fake")
+
 
 
 
@@ -57,11 +60,13 @@ TweetJs.ListTweetsOnUserTimeline("InsideEdition", function(data) {
         console.log(ranNum)
         if (ranNum===1){
           var realP = $("<p>");
+          realP.addClass("newP")
           realP.attr("tweet-type", "real");
           realP.text(allTweets[qCount]);
           $(".tweet").append(realP);
         } else {
           var fakeP = $("<p>");
+          fakeP.addClass("newP")
           fakeP.attr("tweet-type", "fake");
           fakeP.text(allTweets2[qCount]);
           $(".tweet").append(fakeP);
@@ -83,22 +88,28 @@ TweetJs.ListTweetsOnUserTimeline("InsideEdition", function(data) {
 
 
   $(".real-btn").on("click", function(){
-
+    if ($(".real-btn").attr("button-type") === $(".newP").attr("tweet-type")){
+      console.log("correct")
+    } else {
+      console.log("wrong")
+    }
     nextQ();
-  
+
   })
+  
 
   $(".fake-btn").on("click", function(){
+    if ($(".fake-btn").attr("button-type") === $(".newP").attr("tweet-type")){
+      console.log("correct")
+    } else {
+      console.log("wrong")
+    }
     nextQ();
   })
 
   });
   });
-// 1. need if statement (check whether or not the answer is right or wrong)
-// 2. if answer is right, then tweet-type attribute is true/real and if it matches the button pressed
-// should be on the button
-// 3. set attributes to button
-// 4. style with cash money
+
 
 
 
