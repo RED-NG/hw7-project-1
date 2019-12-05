@@ -1,5 +1,6 @@
 var counter = 75;
-var qCount = 0
+var qCount = 0;
+var ranNum;
 
 $(".real-btn")[0].style.display = 'none' 
 $(".fake-btn")[0].style.display = 'none' 
@@ -32,6 +33,7 @@ TweetJs.ListTweetsOnUserTimeline("TheOnion", function(data) {
     filteredTweets = []
     filteredTweets.push(getTweets)
     allTweets = filteredTweets[0].split(",").filter(x=>x.length>110&&!x.includes("RT" && "@" && "\u2026"))
+      console.log(allTweets)
 
     var unfilteredTweets2 = []
 
@@ -45,26 +47,30 @@ TweetJs.ListTweetsOnUserTimeline("InsideEdition", function(data) {
     filteredTweets2 = []
     filteredTweets2.push(getTweets2)
     allTweets2 = filteredTweets2[0].split(",").filter(x=>x.length>90&&!x.includes("RT" && "@" && "\u2026"))
+    console.log(allTweets2)
 
 
-  var thirdArr = allTweets.concat(allTweets2)
-
-
-  let randomArr = thirdArr
-  .map((a) => ({sort: Math.random(), value: a}))
-  .sort((a, b) => a.sort - b.sort)
-  .map((a) => a.value)
-
-  console.log(randomArr)
-
-
-
-  function nextQ(){
-    if (qCount < randomArr.length){
-      $(".tweet").text(randomArr[qCount])
-      qCount++
+    function nextQ(){
+      $(".tweet").empty()
+      if (qCount < 10){
+        ranNum = Math.floor(Math.random() * 2)
+        console.log(ranNum)
+        if (ranNum===1){
+          var realP = $("<p>");
+          realP.attr("tweet-type", "real");
+          realP.text(allTweets[qCount]);
+          $(".tweet").append(realP);
+        } else {
+          var fakeP = $("<p>");
+          fakeP.attr("tweet-type", "fake");
+          fakeP.text(allTweets2[qCount]);
+          $(".tweet").append(fakeP);
+        }
+        qCount++
+      }
     }
-  }
+
+
 
 
   $("#start-btn").on("click", function() {
@@ -77,7 +83,9 @@ TweetJs.ListTweetsOnUserTimeline("InsideEdition", function(data) {
 
 
   $(".real-btn").on("click", function(){
+
     nextQ();
+  
   })
 
   $(".fake-btn").on("click", function(){
@@ -86,7 +94,11 @@ TweetJs.ListTweetsOnUserTimeline("InsideEdition", function(data) {
 
   });
   });
-
+// 1. need if statement (check whether or not the answer is right or wrong)
+// 2. if answer is right, then tweet-type attribute is true/real and if it matches the button pressed
+// should be on the button
+// 3. set attributes to button
+// 4. style with cash money
 
 
 
