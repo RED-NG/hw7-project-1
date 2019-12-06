@@ -88,22 +88,30 @@ TweetJs.ListTweetsOnUserTimeline("InsideEdition", function(data) {
 
 
   $(".real-btn").on("click", function(){
+    $(".result").empty();
     if ($(".real-btn").attr("button-type") === $(".newP").attr("tweet-type")){
-      console.log("correct")
+      var result = $("<p>")
+      result.text("correct")
+      $(".result").append(result)
     } else {
-      console.log("wrong")
-    }
+      var result = $("<p>")
+      result.text("wrong")
+      $(".result").append(result)    }
     nextQ();
 
   })
   
 
   $(".fake-btn").on("click", function(){
+    $(".result").empty();
     if ($(".fake-btn").attr("button-type") === $(".newP").attr("tweet-type")){
-      console.log("correct")
+      var result = $("<p>")
+      result.text("correct")
+      $(".result").append(result)
     } else {
-      console.log("wrong")
-    }
+      var result = $("<p>")
+      result.text("wrong")
+      $(".result").append(result)    }
     nextQ();
   })
 
