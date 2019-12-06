@@ -55,23 +55,31 @@ TweetJs.ListTweetsOnUserTimeline("InsideEdition", function(data) {
 
     function nextQ(){
       $(".tweet").empty()
-      if (qCount < 10){
+      if (qCount < allTweets2.length){
         ranNum = Math.floor(Math.random() * 2)
         console.log(ranNum)
         if (ranNum===1){
           var realP = $("<p>");
           realP.addClass("newP")
           realP.attr("tweet-type", "real");
-          realP.text(allTweets[qCount]);
+          realP.text(allTweets2[qCount]);
           $(".tweet").append(realP);
         } else {
           var fakeP = $("<p>");
           fakeP.addClass("newP")
           fakeP.attr("tweet-type", "fake");
-          fakeP.text(allTweets2[qCount]);
+          fakeP.text(allTweets[qCount]);
           $(".tweet").append(fakeP);
         }
         qCount++
+      }
+      if (qCount === allTweets2.length){
+        console.log("finish")
+        $(".container").empty()
+        var gameOver = $("<div>")
+        gameOver.text("GAME OVER")
+        $(".container").append(gameOver)
+
       }
     }
 
@@ -96,7 +104,9 @@ TweetJs.ListTweetsOnUserTimeline("InsideEdition", function(data) {
     } else {
       var result = $("<p>")
       result.text("wrong")
-      $(".result").append(result)    }
+      $(".result").append(result) 
+      counter-10   
+    }
     nextQ();
 
   })
@@ -111,7 +121,9 @@ TweetJs.ListTweetsOnUserTimeline("InsideEdition", function(data) {
     } else {
       var result = $("<p>")
       result.text("wrong")
-      $(".result").append(result)    }
+      $(".result").append(result)
+      counter-10    
+    }
     nextQ();
   })
 
