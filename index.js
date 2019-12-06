@@ -1,5 +1,7 @@
-var counter = 75;
+var counter = 40;
 var qCount = 0;
+var correct = 0
+var wrong = 0
 var ranNum;
 
 $(".real-btn")[0].style.display = 'none' 
@@ -19,6 +21,7 @@ function setTime() {
     }
     if(counter === 0) {
       clearInterval(timerInterval);
+      
     }
 
   }, 1000);
@@ -78,8 +81,19 @@ TweetJs.ListTweetsOnUserTimeline("InsideEdition", function(data) {
         $(".container").empty()
         var gameOver = $("<div>")
         gameOver.text("GAME OVER")
+        var scoreCorrect = $("<div>")
+        scoreCorrect.text("correct " + correct)
+        var scoreWrong = $("<div>")
+        scoreWrong.text("wrong " + wrong)
+        var tryAgain = $("<button>")
+        tryAgain.text("Try Again")
+        tryAgain.click(function() {
+          location.reload();
+        });
         $(".container").append(gameOver)
-
+        $(".container").append(scoreCorrect)
+        $(".container").append(scoreWrong)
+        $(".container").append(tryAgain)
       }
     }
 
@@ -100,12 +114,13 @@ TweetJs.ListTweetsOnUserTimeline("InsideEdition", function(data) {
     if ($(".real-btn").attr("button-type") === $(".newP").attr("tweet-type")){
       var result = $("<p>")
       result.text("correct")
+      correct++
       $(".result").append(result)
     } else {
       var result = $("<p>")
       result.text("wrong")
-      $(".result").append(result) 
-      counter-10   
+      $(".result").append(result)
+      wrong++   
     }
     nextQ();
 
@@ -117,12 +132,13 @@ TweetJs.ListTweetsOnUserTimeline("InsideEdition", function(data) {
     if ($(".fake-btn").attr("button-type") === $(".newP").attr("tweet-type")){
       var result = $("<p>")
       result.text("correct")
+      correct++
       $(".result").append(result)
     } else {
       var result = $("<p>")
       result.text("wrong")
       $(".result").append(result)
-      counter-10    
+      wrong++    
     }
     nextQ();
   })
@@ -130,6 +146,7 @@ TweetJs.ListTweetsOnUserTimeline("InsideEdition", function(data) {
   });
   });
 
+  //if time runs out, try again => refresh page
 
 
 
