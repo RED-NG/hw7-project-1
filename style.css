@@ -1,0 +1,57 @@
+body {
+  background-image: url(truth-lies-scissors.jpg);
+  background-color: white;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.navbar {
+  color: #777;
+}
+
+.containerTimer {
+  text-align: center;
+}
+
+#countdown,
+#timeCountdown {
+  font-size: 3rem;
+  display: inline-block;
+  width: auto;
+  margin-top: 2em;
+}
+
+.real-div {
+  display: flex;
+  justify-content: center;
+  padding: 2rem;
+}
+.fake-div {
+  display: flex;
+  justify-content: center;
+  padding: 2rem;
+}
+.container {
+  text-align: center;
+}
+.tweet {
+  background-color: white;
+  display: inline-block;
+}
+
+.row {
+  position: relative;
+}
+
+.controls {
+  text-align: center;
+}
+
+#start-btn {
+  background-color: black;
+  color: white;
+  padding: 1rem;
+  position: absolute;
+  top: 100%;
+  left: 44%;
+}
