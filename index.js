@@ -3,33 +3,36 @@ var qCount = 0;
 var correct = 0;
 var wrong = 0;
 var ranNum;
+var timerInterval;
 $(".real-btn")[0].style.display = "none";
 $(".fake-btn")[0].style.display = "none";
 $(".real-btn").attr("button-type", "real");
 $(".fake-btn").attr("button-type", "fake");
+
 function setTime() {
-  var timerInterval = setInterval(function() {
-    if (counter > 0) {
-      counter--;
-      $("#countdown").text(counter);
-    }
-    if (counter === 0) {
-      clearInterval(timerInterval);
-      $(".container").empty();
-      var timeOut = $("<div>");
-      timeOut.text("Better luck next time, Junior.");
-      var tryAgain = $("<button>");
-      tryAgain.text("Try Again");
-      tryAgain.addClass("btn btn-dark");
-      tryAgain.click(function() {
-        location.reload();
-      });
-      $(".container").append(timeOut);
-      $(".clearTime").empty();
-      $(".container").append(tryAgain);
-    }
-  }, 1000);
-}
+    timerInterval = setInterval(function() {
+      if (counter > 0) {
+        counter--;
+        $("#countdown").text(counter);
+      }
+      if (counter === 0) {
+        $(".container").empty();
+        var timeOut = $("<div>");
+        timeOut.text("Better luck next time, Junior.");
+        var tryAgain = $("<button>");
+        tryAgain.text("Try Again");
+        tryAgain.addClass("btn btn-dark");
+        tryAgain.click(function() {
+          location.reload();
+        });
+        $(".container").append(timeOut);
+        $(".clearTime").empty();
+        $(".container").append(tryAgain);
+      }
+    }, 1000);
+  }
+
+
 var unfilteredTweets = [];
 TweetJs.ListTweetsOnUserTimeline("TheOnion", function(data) {
   for (i = 0; i < data.length; i++) {
@@ -84,9 +87,9 @@ TweetJs.ListTweetsOnUserTimeline("TheOnion", function(data) {
         var gameOver = $("<div>");
         gameOver.text("GAME OVER");
         var scoreCorrect = $("<div>");
-        scoreCorrect.text("YOU WIN");
+        scoreCorrect.text("YOU WIN. You know your bullshit.");
         var scoreWrong = $("<div>");
-        scoreWrong.text("YOU LOSE");
+        scoreWrong.text("YOU LOSE. Bet you believe it when strippers say they like you too.");
         var scoreTie = $("<div>");
         scoreTie.text("TIE");
         var tryAgain = $("<button>");
@@ -99,12 +102,15 @@ TweetJs.ListTweetsOnUserTimeline("TheOnion", function(data) {
         if (correct > wrong) {
           $(".container").append(scoreCorrect);
           $(".clearTime").empty();
+          clearInterval(window.timerInterval);
         } else if (wrong > correct) {
           $(".container").append(scoreWrong);
           $(".clearTime").empty();
+          clearInterval(window.timerInterval);
         } else {
           $(".container").append(scoreTie);
           $(".clearTime").empty();
+          clearInterval(window.timerInterval);
         }
         $(".container").append(tryAgain);
       }
@@ -128,7 +134,7 @@ TweetJs.ListTweetsOnUserTimeline("TheOnion", function(data) {
       } else {
         var result = $("<p>");
         result.text(
-          "WRONG. Bet you believe it when strippers say they like you too."
+          "WRONG!"
         );
         $(".result").append(result);
         wrong++;
@@ -147,7 +153,7 @@ TweetJs.ListTweetsOnUserTimeline("TheOnion", function(data) {
       } else {
         var result = $("<p>");
         result.text(
-          "WRONG. Bet you believe it when strippers say they like you too."
+          "WRONG!"
         );
         $(".result").append(result);
         wrong++;
