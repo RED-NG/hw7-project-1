@@ -1,4 +1,4 @@
-var counter = 5;
+var counter = 40;
 var qCount = 0;
 var correct = 0;
 var wrong = 0;

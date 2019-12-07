@@ -18,7 +18,12 @@ body {
   font-size: 3rem;
   display: inline-block;
   width: auto;
+  background-color: white;
+  border-radius: 100%;
+  border: 3px solid #000;
   margin-top: 2em;
+  width: 90px;
+  height: 90px;
 }
 
 .real-div {
