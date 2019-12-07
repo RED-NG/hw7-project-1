@@ -21,7 +21,16 @@ function setTime() {
     }
     if(counter === 0) {
       clearInterval(timerInterval);
-      
+      $(".container").empty()
+      var timeOut = $("<div>")
+      timeOut.text("YOU LOSE")
+      var tryAgain = $("<button>")
+        tryAgain.text("Try Again")
+        tryAgain.click(function() {
+          location.reload();
+        });
+        $(".container").append(timeOut)
+        $(".container").append(tryAgain)
     }
 
   }, 1000);
@@ -52,8 +61,9 @@ TweetJs.ListTweetsOnUserTimeline("InsideEdition", function(data) {
     getTweets2 = localStorage.getItem("test")
     filteredTweets2 = []
     filteredTweets2.push(getTweets2)
-    allTweets2 = filteredTweets2[0].split(",").filter(x=>x.length>90&&!x.includes("RT" && "@" && "\u2026"))
+    allTweets2 = filteredTweets2[0].split(",").filter(x=>x.length>70&&!x.includes("RT" && "@" && "\u2026"))
     console.log(allTweets2)
+
 
 
     function nextQ(){
@@ -82,17 +92,22 @@ TweetJs.ListTweetsOnUserTimeline("InsideEdition", function(data) {
         var gameOver = $("<div>")
         gameOver.text("GAME OVER")
         var scoreCorrect = $("<div>")
-        scoreCorrect.text("correct " + correct)
+        scoreCorrect.text("YOU WIN")
         var scoreWrong = $("<div>")
-        scoreWrong.text("wrong " + wrong)
+        scoreWrong.text("YOU LOSE")
         var tryAgain = $("<button>")
         tryAgain.text("Try Again")
         tryAgain.click(function() {
           location.reload();
         });
         $(".container").append(gameOver)
-        $(".container").append(scoreCorrect)
-        $(".container").append(scoreWrong)
+        if (correct > wrong){
+          $(".container").append(scoreCorrect)
+        } else if (wrong > correct){
+          $(".container").append(scoreWrong)
+        } else {
+          $(".container").append("tie")
+        }
         $(".container").append(tryAgain)
       }
     }
@@ -145,9 +160,6 @@ TweetJs.ListTweetsOnUserTimeline("InsideEdition", function(data) {
 
   });
   });
-
-  //if time runs out, try again => refresh page
-
 
 
 
