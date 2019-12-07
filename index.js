@@ -1,4 +1,4 @@
-var counter = 40;
+var counter = 5;
 var qCount = 0;
 var correct = 0;
 var wrong = 0;
@@ -19,13 +19,14 @@ function setTime() {
       clearInterval(timerInterval);
       $(".container").empty();
       var timeOut = $("<div>");
-      timeOut.text("YOU LOSE");
+      timeOut.text("Better luck next time, Junior.");
       var tryAgain = $("<button>");
       tryAgain.text("Try Again");
       tryAgain.click(function() {
         location.reload();
       });
       $(".container").append(timeOut);
+      $(".containerTimer").empty();
       $(".container").append(tryAgain);
     }
   }, 1000);
@@ -100,10 +101,13 @@ TweetJs.ListTweetsOnUserTimeline("TheOnion", function(data) {
         $(".container").append(gameOver);
         if (correct > wrong) {
           $(".container").append(scoreCorrect);
+          $(".containerTimer").empty();
         } else if (wrong > correct) {
           $(".container").append(scoreWrong);
+          $(".containerTimer").empty();
         } else {
           $(".container").append("tie");
+          $(".containerTimer").empty();
         }
         $(".container").append(tryAgain);
       }
