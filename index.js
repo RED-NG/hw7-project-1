@@ -3,12 +3,10 @@ var qCount = 0;
 var correct = 0;
 var wrong = 0;
 var ranNum;
-
 $(".real-btn")[0].style.display = "none";
 $(".fake-btn")[0].style.display = "none";
 $(".real-btn").attr("button-type", "real");
 $(".fake-btn").attr("button-type", "fake");
-
 function setTime() {
   var timerInterval = setInterval(function() {
     if (counter > 0) {
@@ -22,18 +20,17 @@ function setTime() {
       timeOut.text("Better luck next time, Junior.");
       var tryAgain = $("<button>");
       tryAgain.text("Try Again");
+      tryAgain.addClass("btn btn-dark");
       tryAgain.click(function() {
         location.reload();
       });
       $(".container").append(timeOut);
-      $(".containerTimer").empty();
+      $(".clearTime").empty();
       $(".container").append(tryAgain);
     }
   }, 1000);
 }
-
 var unfilteredTweets = [];
-
 TweetJs.ListTweetsOnUserTimeline("TheOnion", function(data) {
   for (i = 0; i < data.length; i++) {
     var tweetData = data[i].text;
@@ -47,9 +44,7 @@ TweetJs.ListTweetsOnUserTimeline("TheOnion", function(data) {
     .split(",")
     .filter(x => x.length > 110 && !x.includes("RT" && "@" && "\u2026"));
   console.log(allTweets);
-
   var unfilteredTweets2 = [];
-
   TweetJs.ListTweetsOnUserTimeline("InsideEdition", function(data) {
     for (i = 0; i < data.length; i++) {
       var tweetData2 = data[i].text;
@@ -63,7 +58,6 @@ TweetJs.ListTweetsOnUserTimeline("TheOnion", function(data) {
       .split(",")
       .filter(x => x.length > 70 && !x.includes("RT" && "@" && "\u2026"));
     console.log(allTweets2);
-
     function nextQ() {
       $(".tweet").empty();
       if (qCount < allTweets2.length) {
@@ -93,26 +87,28 @@ TweetJs.ListTweetsOnUserTimeline("TheOnion", function(data) {
         scoreCorrect.text("YOU WIN");
         var scoreWrong = $("<div>");
         scoreWrong.text("YOU LOSE");
+        var scoreTie = $("<div>");
+        scoreTie.text("TIE");
         var tryAgain = $("<button>");
         tryAgain.text("Try Again");
+        tryAgain.addClass("btn btn-dark");
         tryAgain.click(function() {
           location.reload();
         });
         $(".container").append(gameOver);
         if (correct > wrong) {
           $(".container").append(scoreCorrect);
-          $(".containerTimer").empty();
+          $(".clearTime").empty();
         } else if (wrong > correct) {
           $(".container").append(scoreWrong);
-          $(".containerTimer").empty();
+          $(".clearTime").empty();
         } else {
-          $(".container").append("tie");
-          $(".containerTimer").empty();
+          $(".container").append(scoreTie);
+          $(".clearTime").empty();
         }
         $(".container").append(tryAgain);
       }
     }
-
     $("#start-btn").on("click", function() {
       nextQ();
       setTime();
@@ -120,7 +116,6 @@ TweetJs.ListTweetsOnUserTimeline("TheOnion", function(data) {
       $(".real-btn")[0].style.display = "inline";
       $(".fake-btn")[0].style.display = "inline";
     });
-
     $(".real-btn").on("click", function() {
       $(".result").empty();
       if (
@@ -140,7 +135,6 @@ TweetJs.ListTweetsOnUserTimeline("TheOnion", function(data) {
       }
       nextQ();
     });
-
     $(".fake-btn").on("click", function() {
       $(".result").empty();
       if (
