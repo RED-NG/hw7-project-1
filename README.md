@@ -1,1 +1,1 @@
-Comparison game that has user guess whether news article headline prompts are real or fake.
+Comparison game that has user guess whether the news headlines are real or fake.
