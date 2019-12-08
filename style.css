@@ -36,12 +36,19 @@ body {
   justify-content: center;
   padding: 2rem;
 }
+
 .container {
   text-align: center;
 }
+
+.tryAgainBtn {
+  text-align: center
+}
+
 .tweet {
-  background-color: white;
   display: inline-block;
+  margin-top: 10rem;
+  width: 50%;
 }
 
 .row {
@@ -59,4 +66,26 @@ body {
   position: absolute;
   top: 100%;
   left: 44%;
+}
+
+.newP {
+  border: 3px solid black;
+  background-color: white;
+}
+
+.pTimeout {
+  border: 3px solid black;
+  background-color: white;
+  margin-top: 10rem;
+  display: inline-block;
+}
+
+.resultP {
+  border: 3px solid black;
+  background-color: white;
+  display: inline-block;
+}
+
+.result {
+  text-align: center;
 }
