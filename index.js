@@ -1,4 +1,4 @@
-var counter = 40;
+var counter = 3;
 var qCount = 0;
 var correct = 0;
 var wrong = 0;
@@ -10,28 +10,29 @@ $(".real-btn").attr("button-type", "real");
 $(".fake-btn").attr("button-type", "fake");
 
 function setTime() {
-    timerInterval = setInterval(function() {
-      if (counter > 0) {
-        counter--;
-        $("#countdown").text(counter);
-      }
-      if (counter === 0) {
-        $(".container").empty();
-        var timeOut = $("<div>");
-        timeOut.text("Better luck next time, Junior.");
-        var tryAgain = $("<button>");
-        tryAgain.text("Try Again");
-        tryAgain.addClass("btn btn-dark");
-        tryAgain.click(function() {
-          location.reload();
-        });
-        $(".container").append(timeOut);
-        $(".clearTime").empty();
-        $(".container").append(tryAgain);
-      }
-    }, 1000);
-  }
-
+  timerInterval = setInterval(function() {
+    if (counter > 0) {
+      counter--;
+      $("#countdown").text(counter);
+    }
+    if (counter === 0) {
+      $(".container").empty();
+      $(".tryAgainBtn").empty();
+      var timeOut = $("<p>");
+      timeOut.addClass("pTimeout");
+      timeOut.text("Better luck next time, Junior.");
+      var tryAgain = $("<button>");
+      tryAgain.text("Try Again");
+      tryAgain.addClass("btn btn-dark");
+      tryAgain.click(function() {
+        location.reload();
+      });
+      $(".container").append(timeOut);
+      $(".clearTime").empty();
+      $(".tryAgainBtn").append(tryAgain);
+    }
+  }, 1000);
+}
 
 var unfilteredTweets = [];
 TweetJs.ListTweetsOnUserTimeline("TheOnion", function(data) {
@@ -61,6 +62,7 @@ TweetJs.ListTweetsOnUserTimeline("TheOnion", function(data) {
       .split(",")
       .filter(x => x.length > 70 && !x.includes("RT" && "@" && "\u2026"));
     console.log(allTweets2);
+
     function nextQ() {
       $(".tweet").empty();
       if (qCount < allTweets2.length) {
@@ -89,7 +91,9 @@ TweetJs.ListTweetsOnUserTimeline("TheOnion", function(data) {
         var scoreCorrect = $("<div>");
         scoreCorrect.text("YOU WIN. You know your bullshit.");
         var scoreWrong = $("<div>");
-        scoreWrong.text("YOU LOSE. Bet you believe it when strippers say they like you too.");
+        scoreWrong.text(
+          "YOU LOSE. Bet you believe it when strippers say they like you too."
+        );
         var scoreTie = $("<div>");
         scoreTie.text("TIE");
         var tryAgain = $("<button>");
@@ -128,14 +132,18 @@ TweetJs.ListTweetsOnUserTimeline("TheOnion", function(data) {
         $(".real-btn").attr("button-type") === $(".newP").attr("tweet-type")
       ) {
         var result = $("<p>");
+
+        result.addClass("resultP");
+
         result.text("CORRECT! Nice guess.");
         correct++;
         $(".result").append(result);
       } else {
         var result = $("<p>");
-        result.text(
-          "WRONG!"
-        );
+
+        result.addClass("resultP");
+
+        result.text("WRONG!");
         $(".result").append(result);
         wrong++;
       }
@@ -147,14 +155,18 @@ TweetJs.ListTweetsOnUserTimeline("TheOnion", function(data) {
         $(".fake-btn").attr("button-type") === $(".newP").attr("tweet-type")
       ) {
         var result = $("<p>");
+
+        result.addClass("resultP");
+
         result.text("CORRECT! Nice guess.");
         correct++;
         $(".result").append(result);
       } else {
         var result = $("<p>");
-        result.text(
-          "WRONG!"
-        );
+
+        result.addClass("resultP");
+
+        result.text("WRONG!");
         $(".result").append(result);
         wrong++;
       }
