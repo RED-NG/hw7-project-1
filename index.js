@@ -135,7 +135,7 @@ TweetJs.ListTweetsOnUserTimeline("TheOnion", function(data) {
 
         result.addClass("resultP");
 
-        result.text("CORRECT! Nice guess.");
+        result.text("CORRECT! Nice guess, Genius.");
         correct++;
         $(".result").append(result);
       } else {

@@ -7,6 +7,8 @@ body {
 
 .navbar {
   color: #777;
+  font-family: 'Gloria Hallelujah', cursive;
+
 }
 
 .containerTimer {
@@ -24,17 +26,23 @@ body {
   margin-top: 2em;
   width: 90px;
   height: 90px;
+  font-family: 'Gloria Hallelujah', cursive;
+
 }
 
 .real-div {
   display: flex;
   justify-content: center;
   padding: 2rem;
+  font-family: 'Gloria Hallelujah', cursive;
+
 }
 .fake-div {
   display: flex;
   justify-content: center;
   padding: 2rem;
+  font-family: 'Gloria Hallelujah', cursive;
+
 }
 
 .container {
@@ -42,7 +50,9 @@ body {
 }
 
 .tryAgainBtn {
-  text-align: center
+  text-align: center;
+  font-family: 'Gloria Hallelujah', cursive;
+
 }
 
 .tweet {
@@ -66,6 +76,8 @@ body {
   position: absolute;
   top: 100%;
   left: 44%;
+  font-family: 'Gloria Hallelujah', cursive;
+
 }
 
 .newP {
@@ -74,6 +86,8 @@ body {
   font-family: sans-serif;
   font-size:1.5rem;
   padding: 1rem;
+  font-family: 'Gloria Hallelujah', cursive;
+
 }
 
 .pTimeout {
@@ -83,6 +97,8 @@ body {
   display: inline-block;
   font-size:1.5rem;
   padding: 1rem;
+  font-family: 'Gloria Hallelujah', cursive;
+
 }
 
 .resultP {
@@ -91,6 +107,8 @@ body {
   display: inline-block;
   font-size:1.5rem;
   padding: 1rem;
+font-family: 'Gloria Hallelujah', cursive;
+
 }
 
 .result {
