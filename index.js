@@ -60,7 +60,7 @@ TweetJs.ListTweetsOnUserTimeline("TheOnion", function(data) {
     filteredTweets2.push(getTweets2);
     allTweets2 = filteredTweets2[0]
       .split(",")
-      .filter(x => x.length > 70 && !x.includes("RT" && "@" && "\u2026"));
+      .filter(x => x.length > 90 && !x.includes("RT" && "@" && "\u2026"));
     console.log(allTweets2);
 
     function nextQ() {
@@ -89,12 +89,15 @@ TweetJs.ListTweetsOnUserTimeline("TheOnion", function(data) {
         var gameOver = $("<div>");
         gameOver.text("GAME OVER");
         var scoreCorrect = $("<div>");
+        scoreCorrect.addClass("correctDiv")
         scoreCorrect.text("YOU WIN. You know your bullshit.");
         var scoreWrong = $("<div>");
+        scoreWrong.addClass("wrongDiv")
         scoreWrong.text(
           "YOU LOSE. Bet you believe it when strippers say they like you too."
         );
         var scoreTie = $("<div>");
+        scoreTie.addClass("tieDiv")
         scoreTie.text("TIE");
         var tryAgain = $("<button>");
         tryAgain.text("Try Again");
@@ -102,10 +105,11 @@ TweetJs.ListTweetsOnUserTimeline("TheOnion", function(data) {
         tryAgain.click(function() {
           location.reload();
         });
-        $(".container").append(gameOver);
+        $(".tryAgainBtn").append(tryAgain);
         if (correct > wrong) {
           $(".container").append(scoreCorrect);
           $(".clearTime").empty();
+
           clearInterval(window.timerInterval);
         } else if (wrong > correct) {
           $(".container").append(scoreWrong);
@@ -116,7 +120,7 @@ TweetJs.ListTweetsOnUserTimeline("TheOnion", function(data) {
           $(".clearTime").empty();
           clearInterval(window.timerInterval);
         }
-        $(".container").append(tryAgain);
+        $(".tryAgainBtn").append(tryAgain);
       }
     }
     $("#start-btn").on("click", function() {
@@ -135,7 +139,7 @@ TweetJs.ListTweetsOnUserTimeline("TheOnion", function(data) {
 
         result.addClass("resultP");
 
-        result.text("CORRECT! Nice guess, Genius.");
+        result.text("CORRECT! Nice guess, genius.");
         correct++;
         $(".result").append(result);
       } else {
@@ -155,17 +159,13 @@ TweetJs.ListTweetsOnUserTimeline("TheOnion", function(data) {
         $(".fake-btn").attr("button-type") === $(".newP").attr("tweet-type")
       ) {
         var result = $("<p>");
-
         result.addClass("resultP");
-
         result.text("CORRECT! Nice guess.");
         correct++;
         $(".result").append(result);
       } else {
         var result = $("<p>");
-
         result.addClass("resultP");
-
         result.text("WRONG!");
         $(".result").append(result);
         wrong++;

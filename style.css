@@ -23,7 +23,7 @@ body {
   background-color: white;
   border-radius: 100%;
   border: 3px solid #000;
-  margin-top: 2em;
+  margin-top: 1.5em;
   width: 90px;
   height: 90px;
   font-family: 'Gloria Hallelujah', cursive;
@@ -47,6 +47,8 @@ body {
 
 .container {
   text-align: center;
+  margin-top: 1rem;
+  margin-bottom:1rem;
 }
 
 .tryAgainBtn {
@@ -57,7 +59,7 @@ body {
 
 .tweet {
   display: inline-block;
-  margin-top: 10rem;
+  margin-top: 1rem;
   width: 50%;
 }
 
@@ -84,7 +86,7 @@ body {
   border: 1px solid black;
   background-color: white;
   font-family: sans-serif;
-  font-size:1.5rem;
+  font-size:20px;
   padding: 1rem;
   font-family: 'Gloria Hallelujah', cursive;
 
@@ -93,7 +95,7 @@ body {
 .pTimeout {
   border: 1px solid black;
   background-color: white;
-  margin-top: 10rem;
+  margin-top: 20px;
   display: inline-block;
   font-size:1.5rem;
   padding: 1rem;
@@ -105,13 +107,38 @@ body {
   border: 1px solid black;
   background-color: white;
   display: inline-block;
-  font-size:1.5rem;
+  font-size:20px;
   padding: 1rem;
-font-family: 'Gloria Hallelujah', cursive;
+  font-family: 'Gloria Hallelujah', cursive;
+  font-weight:bolder;
+}
+.correctDiv{
+  border: 1px solid black;
+  background-color: white;
+  display: inline-block;
+  font-size:20px;
+  padding: 1rem;
+  font-family: 'Gloria Hallelujah', cursive;
 
 }
+.wrongDiv{
+  border: 1px solid black;
+  background-color: white;
+  display: inline-block;
+  font-size:20px;
+  padding: 1rem;
+  font-family: 'Gloria Hallelujah', cursive;
 
+}
+.tieDiv{
+  border: 1px solid black;
+  background-color: white;
+  display: inline-block;
+  font-size:20px;
+  padding: 1rem;
+  font-family: 'Gloria Hallelujah', cursive;
+}
 .result {
   text-align: center;
-  font-size:1.5rem;
+  font-size:20px;
 }
